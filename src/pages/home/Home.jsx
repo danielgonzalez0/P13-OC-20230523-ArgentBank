@@ -5,6 +5,7 @@ import Features from '../../components/featuresCard/Features';
 import chatIcon from './icon-chat.png';
 import moneyIcon from './icon-money.png';
 import securityIcon from './icon-security.png';
+import Footer from '../../components/footer/Footer';
 
 /**
  * React component given the homepage of the application
@@ -41,6 +42,7 @@ const Home = () => {
           />
         </section>
       </main>
+      <Footer />
     </>
   );
 };
