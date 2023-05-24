@@ -1,7 +1,7 @@
-
 .sign-in-button {
   display: block;
   width: 100%;
+  height: 41px;
   padding: 8px;
   font-size: 1.1rem;
   font-weight: bold;
@@ -9,12 +9,22 @@
   border-color: $green2;
   background-color: $green2;
   color: $white2;
+  transition: 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    background: $white2;
+    color: $green2;
+    border: 1px solid $green2;
+    box-shadow: 0 0px 10px $green2;
+  }
 }
 
 .sign-in-content {
   box-sizing: border-box;
   background-color: $white2;
   width: 300px;
+  min-height: 428px;
   margin: 0 auto;
   margin-top: 3rem;
   padding: 2rem;
@@ -46,4 +56,8 @@
 .input-wrapper input {
   padding: 5px;
   font-size: 1.2rem;
+}
+
+.error{
+    color: red;
 }
