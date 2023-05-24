@@ -9,7 +9,7 @@ const LoginForm = () => {
   const inputName = useRef();
   const inputPassword = useRef();
   const inputRemenber = useRef();
-  const submitForm = useRef();
+  const formRef = useRef();
   const [isError, setIsError] = useState(false);
   const [error, setError] = useState();
   const [token, setToken] = useState();
@@ -32,6 +32,8 @@ const LoginForm = () => {
       .then((res) => {
         setToken(res.data.body.token);
         console.log(token);
+        formRef.current.reset();
+        window.location = '/profil';
       })
       .catch((err) => {
         setIsError(true);
@@ -44,7 +46,7 @@ const LoginForm = () => {
     <section className="sign-in-content">
       <i className="fa fa-user-circle sign-in-icon"></i>
       <h1>Sign In</h1>
-      <form onSubmit={(e) => handleSubmit(e)} ref={submitForm}>
+      <form onSubmit={(e) => handleSubmit(e)} ref={formRef}>
         <div className="input-wrapper">
           <label htmlFor="username">Username</label>
           <input
