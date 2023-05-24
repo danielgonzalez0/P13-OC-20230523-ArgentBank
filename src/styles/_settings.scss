@@ -3,7 +3,9 @@ $textColor1: #2c3e50;
 $green1: #42b983;
 $green2: #00bc77;
 $black1: #222;
+$black2: #12002b;
 $white1: #ccc;
+$white2: #fff;
 
 html {
   font-family: $font;
@@ -13,7 +15,7 @@ html {
   color: $textColor1;
 }
 
-body {
+body, .body-wrapper {
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -22,4 +24,8 @@ body {
 
 .main {
   flex: 1;
+}
+
+.bg-dark {
+  background-color: $black2;
 }

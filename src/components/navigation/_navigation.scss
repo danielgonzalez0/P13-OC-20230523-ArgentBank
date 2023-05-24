@@ -24,6 +24,10 @@
   color: $textColor1;
 }
 
+.main-nav i {
+margin-right: 5px;
+}
+
 .main-nav a.router-link-exact-active {
   color: $green1;
 }
