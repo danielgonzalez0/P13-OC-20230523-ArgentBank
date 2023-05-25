@@ -16,7 +16,7 @@ const LoginForm = () => {
   const [isError, setIsError] = useState(false);
   const [error, setError] = useState();
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   /**
    * handle call to the server on login form submission
@@ -37,12 +37,16 @@ const LoginForm = () => {
       })
       .then(() => {
         formRef.current.reset();
-        navigate('/profil')
+        navigate('/profil');
       })
       .catch((err) => {
         setIsError(true);
-        setError(err.response.data.message);
-        console.log(err.response.data.message);
+        if (err.response.data.message) {
+          setError(err.response.data.message);
+          console.log(err.response.data.message);
+        } else {
+          setError("unknown error");
+        }
       });
   };
 
