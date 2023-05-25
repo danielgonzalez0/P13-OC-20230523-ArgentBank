@@ -1,5 +1,8 @@
 import React, { useRef, useState } from 'react';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { addToken } from '../../redux/token.slice';
+import { useNavigate } from 'react-router-dom';
 
 /**
  * React component given the login form for the connexion
@@ -12,14 +15,14 @@ const LoginForm = () => {
   const formRef = useRef();
   const [isError, setIsError] = useState(false);
   const [error, setError] = useState();
-  const [token, setToken] = useState();
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   /**
    * handle call to the server on login form submission
    * @param {object} e event on form submission
    */
   const handleSubmit = (e) => {
-    console.log(e);
     e.preventDefault();
 
     const data = {
@@ -30,10 +33,11 @@ const LoginForm = () => {
     axios
       .post(`${process.env.REACT_APP_URL}/user/login`, data)
       .then((res) => {
-        setToken(res.data.body.token);
-        console.log(token);
+        dispatch(addToken(res.data.body.token));
+      })
+      .then(() => {
         formRef.current.reset();
-        window.location = '/profil';
+        navigate('/profil')
       })
       .catch((err) => {
         setIsError(true);
