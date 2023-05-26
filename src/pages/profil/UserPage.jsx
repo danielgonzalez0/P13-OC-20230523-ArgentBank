@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Navigation from '../../components/navigation/Navigation';
 import Footer from '../../components/footer/Footer';
 import { useNavigate } from 'react-router-dom';
-import getUserinfos from '../../utils/axiosRequest';
+import { getUser } from '../../redux/user.slice';
 
 /**
  * React component given the profil page of the user connected
@@ -11,15 +12,34 @@ import getUserinfos from '../../utils/axiosRequest';
  */
 const UserPage = () => {
   const userToken = useSelector((state) => state.token);
+  const [isLoading, setIsLoading] = useState(true);
+  const user = useSelector((state)=>state.user)
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (userToken.userToken === null) {
+    if (userToken === null) {
       navigate('/login');
     } else {
-       getUserinfos(userToken);
+      axios
+        .post(
+          `${process.env.REACT_APP_URL}/user/profile`,
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${userToken}`,
+            },
+          }
+        )
+        .then((res) => {
+          dispatch(getUser(res.data.body));
+          setIsLoading(false);
+        })
+        .catch((err) => console.log(err));
     }
-  }, [userToken, navigate]);
+  }, [userToken, navigate, dispatch]);
+
+  if(isLoading) return <p>Data is loading...</p>
 
   return (
     <div className="body-wrapper">
@@ -29,7 +49,7 @@ const UserPage = () => {
           <h1>
             Welcome back
             <br />
-            Tony Jarvis!
+            {`${user.firstName} ${user.lastName} !`}
           </h1>
           <button className="edit-button">Edit Name</button>
         </div>
