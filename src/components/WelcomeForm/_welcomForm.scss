@@ -18,6 +18,20 @@
   margin-bottom: 2rem;
 }
 
+.error-welcome-container {
+  color: $green2;
+  padding: 10px 0;
+  margin: 0 auto;
+  width: 400px;
+  line-height: 35px;
+  li {
+    list-style: none;
+    text-align: left;
+    padding-left: 25px;
+    line-height: 24px;
+  }
+}
+
 .grid-welcome-form {
   display: grid;
   gap: 15px;
@@ -37,6 +51,12 @@
     &:hover {
       border: solid 1px $green2;
       outline: solid 2px $green2;
+    }
+    &::placeholder /* Chrome, Firefox, Opera, Safari 10.1+ */,
+    &:-ms-input-placeholder /* Internet Explorer 10-11 */,
+    &::-ms-input-placeholder /* Microsoft Edge */ {
+      color: rgba($textColor1, 0.5);
+      opacity: 1; /* Firefox */
     }
   }
 
@@ -87,9 +107,9 @@
       'firstText firstText'
       'secondText secondText'
       'saveBtn cancelBtn';
-  
+
     input[type='text'] {
-    width: 100%;
+      width: 100%;
+    }
   }
-}
 }

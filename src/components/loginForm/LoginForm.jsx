@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 const LoginForm = () => {
   const inputName = useRef();
   const inputPassword = useRef();
-  const inputRemenber = useRef();
+  const inputRemember = useRef();
   const formRef = useRef();
   const [isError, setIsError] = useState(false);
   const [error, setError] = useState();
@@ -24,14 +24,14 @@ const LoginForm = () => {
    */
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    
     const data = {
       email: inputName.current.value,
       password: inputPassword.current.value,
     };
 
     axios
-      .post(`${process.env.REACT_APP_URL}/user/login`, data)
+      .post(`${process.env.REACT_APP_LOCALHOST_URL}/user/login`, data)
       .then((res) => {
         dispatch(addToken(res.data.body.token));
       })
@@ -43,9 +43,8 @@ const LoginForm = () => {
         setIsError(true);
         if (err.response.data.message) {
           setError(err.response.data.message);
-          console.log(err.response.data.message);
         } else {
-          setError("unknown error");
+          setError('unknown error');
         }
       });
   };
@@ -75,7 +74,7 @@ const LoginForm = () => {
           />
         </div>
         <div className="input-remember">
-          <input type="checkbox" id="remember-me" ref={inputRemenber} />
+          <input type="checkbox" id="remember-me" ref={inputRemember} />
           <label htmlFor="remember-me">Remember me</label>
         </div>
         <input type="submit" className="sign-in-button" value="Sign In" />

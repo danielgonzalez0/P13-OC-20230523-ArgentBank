@@ -23,7 +23,7 @@ const UserPage = () => {
     } else {
       axios
         .post(
-          `${process.env.REACT_APP_URL}/user/profile`,
+          `${process.env.REACT_APP_LOCALHOST_URL}/user/profile`,
           {},
           {
             headers: {
@@ -45,7 +45,7 @@ const UserPage = () => {
     <div className="body-wrapper">
       <Navigation />
       <main className="main bg-dark">
-       <WelcomForm />
+       <WelcomForm token={userToken}/>
       </main>
       <Footer />
     </div>
