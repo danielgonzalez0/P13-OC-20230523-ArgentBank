@@ -1,0 +1,95 @@
+.edit-button {
+  border-color: $green2;
+  background-color: $green2;
+  color: $white2;
+  font-weight: bold;
+  padding: 10px;
+  cursor: pointer;
+  &:hover {
+    background: $white2;
+    color: $green2;
+    border: 1px solid $green2;
+    box-shadow: 0 0px 10px $green2;
+  }
+}
+
+.header {
+  color: $white2;
+  margin-bottom: 2rem;
+}
+
+.grid-welcome-form {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(2, minmax(150px 1fr));
+  grid-template-rows: 40px 35px;
+  grid-template-areas:
+    'firstText secondText'
+    'saveBtn cancelBtn';
+
+  input[type='text'] {
+    font-family: $font;
+    font-size: 16px;
+    width: 200px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    &:focus-visible,
+    &:hover {
+      border: solid 1px $green2;
+      outline: solid 2px $green2;
+    }
+  }
+
+  .welcome-form-btn {
+    font-family: $font;
+    font-size: 14px;
+    font-weight: 700;
+    width: 100px;
+    padding: 5px;
+    border-radius: 5px;
+    background: $white2;
+    color: $green2;
+    border: 1px solid $green2;
+    transition: 0.3s;
+
+    &:hover {
+      box-shadow: 0 0px 10px $white2;
+      color: $white2;
+      background: $green2;
+    }
+    &:focus-visible {
+      border: solid 1px $green2;
+      outline: solid 2px $green2;
+    }
+  }
+
+  #firstName {
+    grid-area: firstText;
+    justify-self: end;
+  }
+  #lastName {
+    grid-area: secondText;
+  }
+  #welcome-save-btn {
+    grid-area: saveBtn;
+    justify-self: end;
+  }
+  #welcome-cancel-btn {
+    grid-area: cancelBtn;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .grid-welcome-form {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 40px 40px 35px;
+    grid-template-areas:
+      'firstText firstText'
+      'secondText secondText'
+      'saveBtn cancelBtn';
+  
+    input[type='text'] {
+    width: 100%;
+  }
+}
+}

@@ -7,6 +7,10 @@ $black2: #12002b;
 $white1: #ccc;
 $white2: #fff;
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   font-family: $font;
   -webkit-font-smoothing: antialiased;
@@ -15,7 +19,8 @@ html {
   color: $textColor1;
 }
 
-body, .body-wrapper {
+body,
+.body-wrapper {
   margin: 0;
   display: flex;
   flex-direction: column;

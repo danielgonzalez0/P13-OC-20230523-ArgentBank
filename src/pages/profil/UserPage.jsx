@@ -5,6 +5,7 @@ import Navigation from '../../components/navigation/Navigation';
 import Footer from '../../components/footer/Footer';
 import { useNavigate } from 'react-router-dom';
 import { getUser } from '../../redux/user.slice';
+import WelcomForm from '../../components/WelcomeForm/WelcomForm';
 
 /**
  * React component given the profil page of the user connected
@@ -13,7 +14,6 @@ import { getUser } from '../../redux/user.slice';
 const UserPage = () => {
   const userToken = useSelector((state) => state.token);
   const [isLoading, setIsLoading] = useState(true);
-  const user = useSelector((state)=>state.user)
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -45,14 +45,7 @@ const UserPage = () => {
     <div className="body-wrapper">
       <Navigation />
       <main className="main bg-dark">
-        <div className="header">
-          <h1>
-            Welcome back
-            <br />
-            {`${user.firstName} ${user.lastName} !`}
-          </h1>
-          <button className="edit-button">Edit Name</button>
-        </div>
+       <WelcomForm />
       </main>
       <Footer />
     </div>
