@@ -6,6 +6,7 @@ import Footer from '../../components/footer/Footer';
 import { useNavigate } from 'react-router-dom';
 import { getUser } from '../../redux/user.slice';
 import WelcomForm from '../../components/WelcomeForm/WelcomForm';
+import Transaction from '../../components/transaction/Transaction';
 
 /**
  * React component given the profil page of the user connected
@@ -46,6 +47,7 @@ const UserPage = () => {
       <Navigation />
       <main className="main bg-dark">
        <WelcomForm token={userToken}/>
+       <Transaction />
       </main>
       <Footer />
     </div>

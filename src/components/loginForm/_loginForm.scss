@@ -12,12 +12,12 @@
   transition: 0.3s;
   cursor: pointer;
 
-  &:hover {
-    background: $white2;
-    color: $green2;
-    border: 1px solid $green2;
-    box-shadow: 0 0px 10px $green2;
-  }
+    &:hover {
+      background: $white2;
+      color: $green2;
+      border: 1px solid $green2;
+      box-shadow: 0 0px 10px $green2;
+    }
 }
 
 .sign-in-content {
