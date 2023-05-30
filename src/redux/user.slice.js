@@ -17,7 +17,13 @@ export const userSlice = createSlice({
         lastName: action.payload.lastName,
       });
     },
-    updateUserName: (state, action) => {},
+    updateUserName: (state, action) => {
+      return state = {
+        ...state,
+        firstName: action.payload.firstName,
+        lastName: action.payload.lastName
+      }
+    },
     clearUser: (state) => {
       return (state = {
         id: null,

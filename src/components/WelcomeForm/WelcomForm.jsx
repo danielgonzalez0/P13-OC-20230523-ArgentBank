@@ -1,8 +1,9 @@
 import React, { useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { nameValidity } from '../../utils/utils';
+import { updateUserName } from '../../redux/user.slice';
 
 /**
  * React component given the custom welcome message of the user connected
@@ -16,6 +17,7 @@ const WelcomForm = ({ token }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState();
+  const dispatch = useDispatch();
 
   /**
    * handle edit name profil on form submission
@@ -23,13 +25,12 @@ const WelcomForm = ({ token }) => {
    */
   const handleSubmit = (e) => {
     e.preventDefault();
-    //test input with regex 
+    //test input with regex
     const firstNameCheck = nameValidity(inputFirstName.current.value);
     const lastNameCheck = nameValidity(inputLastName.current.value);
-    console.log(firstNameCheck, lastNameCheck);
-
+  
     if (firstNameCheck && lastNameCheck) {
-     // prepare body for axios request
+      // prepare body for axios request
       const data = {
         firstName: inputFirstName.current.value,
         lastName: inputLastName.current.value,
@@ -41,7 +42,14 @@ const WelcomForm = ({ token }) => {
             Authorization: `Bearer ${token}`,
           },
         })
-        .then((res) => console.log(res.data.body))
+        .then((res) => {
+          const updateData = {
+            firstName: res.data.body.firstName,
+            lastName: res.data.body.lastName,
+          };
+          dispatch(updateUserName(updateData))
+          setIsEditing(false)
+        })
         .catch((err) => {
           setIsError(true);
           console.log(err);
