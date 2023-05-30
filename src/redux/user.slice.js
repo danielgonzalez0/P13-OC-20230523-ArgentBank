@@ -18,11 +18,11 @@ export const userSlice = createSlice({
       });
     },
     updateUserName: (state, action) => {
-      return state = {
+      return (state = {
         ...state,
         firstName: action.payload.firstName,
-        lastName: action.payload.lastName
-      }
+        lastName: action.payload.lastName,
+      });
     },
     clearUser: (state) => {
       return (state = {
