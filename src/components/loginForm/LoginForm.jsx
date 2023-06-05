@@ -24,7 +24,7 @@ const LoginForm = () => {
    */
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     const data = {
       email: inputName.current.value,
       password: inputPassword.current.value,
@@ -43,7 +43,7 @@ const LoginForm = () => {
         console.log(err);
         setIsError(true);
         if (err.response.data.message) {
-          setError(err.response.data.message);
+          setError('data entry error');
         } else {
           setError('unknown error');
         }
