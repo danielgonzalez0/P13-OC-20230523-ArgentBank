@@ -5,8 +5,8 @@ import Navigation from '../../components/navigation/Navigation';
 import Footer from '../../components/footer/Footer';
 import { useNavigate } from 'react-router-dom';
 import { getUser } from '../../redux/user.slice';
-import WelcomForm from '../../components/WelcomeForm/WelcomForm';
 import Transaction from '../../components/transaction/Transaction';
+import WelcomForm from '../../components/welcomForm/WelcomForm';
 
 /**
  * React component given the profil page of the user connected
@@ -40,14 +40,15 @@ const UserPage = () => {
     }
   }, [userToken, navigate, dispatch]);
 
-  if(isLoading) return <p>Data is loading...</p>
+  if (isLoading) return <p>Data is loading...</p>;
 
   return (
     <div className="body-wrapper">
       <Navigation />
       <main className="main bg-dark">
-       <WelcomForm token={userToken}/>
-       <Transaction />
+        <WelcomForm token={userToken} />
+        {/* <WelcomForm token={userToken}/> */}
+        <Transaction />
       </main>
       <Footer />
     </div>

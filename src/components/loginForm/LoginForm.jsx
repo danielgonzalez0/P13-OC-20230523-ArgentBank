@@ -40,7 +40,6 @@ const LoginForm = () => {
         navigate('/profil');
       })
       .catch((err) => {
-        console.log(err);
         setIsError(true);
         if (err.response.data.message) {
           setError('data entry error');

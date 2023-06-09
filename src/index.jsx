@@ -6,7 +6,6 @@ import Router from './pages/router/Router';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 
-//redux-persist
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

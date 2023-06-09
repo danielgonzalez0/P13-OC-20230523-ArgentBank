@@ -359,13 +359,13 @@ definitions:
               type: string
             category: 
               type: string
-            subCategory:
+            sub-category:
               type: string
             title: 
               type: string
             description: 
               type: string
-            customDescription: 
+            custom-description: 
               type: string
             amount: 
              type: number
@@ -386,13 +386,13 @@ definitions:
             type: string
           category: 
             type: string
-          subCategory:
+          sub-category:
             type: string
           title: 
             type: string
           description: 
             type: string
-          customDescription: 
+          custom-description: 
             type: string
           amount: 
             type: number
@@ -403,9 +403,9 @@ definitions:
         type: string
       category:
         type: string
-      subCategory:
+      sub-category:
         type: string
-      customDescription:
+      custom-description:
         type: string
 components:
   schemas:

@@ -28,7 +28,7 @@ const WelcomForm = ({ token }) => {
     //test input with regex
     const firstNameCheck = nameValidity(inputFirstName.current.value);
     const lastNameCheck = nameValidity(inputLastName.current.value);
-  
+
     if (firstNameCheck && lastNameCheck) {
       // prepare body for axios request
       const data = {
@@ -47,8 +47,8 @@ const WelcomForm = ({ token }) => {
             firstName: res.data.body.firstName,
             lastName: res.data.body.lastName,
           };
-          dispatch(updateUserName(updateData))
-          setIsEditing(false)
+          dispatch(updateUserName(updateData));
+          setIsEditing(false);
         })
         .catch((err) => {
           setIsError(true);
